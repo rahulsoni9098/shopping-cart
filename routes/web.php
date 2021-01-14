@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,22 +12,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
-Route::get('/', function(){
-  return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'CartController@index');
+Route::post('/add', 'CartController@add_cart');
+Route::post('/remove', 'CartController@remove_cart');
 
-Route::get('/products', 'ProductsController@index');
-
-Route::get('cart', 'ProductsController@cart');
-
-Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
-
-Route::patch('update-cart', 'ProductsController@update');
-
-Route::delete('remove-from-cart', 'ProductsController@remove');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
